@@ -1,0 +1,5 @@
+{
+  "folder": "memory/raw/daily",
+  "template": "templates/daily",
+  "format": "YYYY-MM-DD"
+}

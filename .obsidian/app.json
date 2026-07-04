@@ -1,0 +1,6 @@
+{
+  "attachmentFolderPath": "memory/raw/attachments",
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "alwaysUpdateLinks": true
+}

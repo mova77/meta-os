@@ -1,0 +1,28 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    { "query": "path:projects", "color": { "a": 1, "rgb": 5431378 } },
+    { "query": "path:skills", "color": { "a": 1, "rgb": 14701138 } },
+    { "query": "path:systems", "color": { "a": 1, "rgb": 5419488 } },
+    { "query": "path:memory", "color": { "a": 1, "rgb": 11621088 } },
+    { "query": "path:agents", "color": { "a": 1, "rgb": 14725458 } }
+  ],
+  "collapse-display": true,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.5,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 1,
+  "close": true
+}

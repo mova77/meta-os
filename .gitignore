@@ -1,0 +1,24 @@
+# OS noise
+.DS_Store
+*.swp
+
+# Obsidian workspace/local state (keep config + plugin list, drop per-machine state)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+
+# Local-only captures — memory/raw is scratch; promote to wiki before committing.
+# Uncomment the next line if raw captures should stay off the remote.
+# memory/raw/**
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# claude-flow runtime state — operational, not knowledge
+.claude-flow/
+.swarm/
+agentdb.rvf*
