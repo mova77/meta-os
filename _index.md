@@ -1,46 +1,32 @@
 ---
 type: index
-tags: [os, home, moc]
+tags: [os, home, framework]
 ---
-# 🧠 meta-os — Agentic OS Home
+# ⚙️ meta-os — Agentic OS framework
 
-The map of content for the OS. This vault is the meta-layer above every project — see
-[[CLAUDE|CLAUDE.md]] for the contract.
+Map of content for the **framework**. If you're operating the OS, open the *instance*
+vault instead — this repo is the generic layer it mounts.
 
-## The three layers
+## What's here
 
-> **Skill backbone, not dashboard.** Value is bottom-up: skills → memory → interface.
+| Folder | What |
+|--------|------|
+| [[skills/_index\|skills/]] | The skill library — Layer 1 backbone |
+| [[systems/_index\|systems/]] | How the OS operates — operating model, memory, process & swarm harnesses |
+| [[agents/_index\|agents/]] | Agent roster + coordination patterns |
+| [[templates/_index\|templates/]] | Note templates |
+| memory/ | Empty `raw → wiki → output` skeleton with conventions — instances own the live one |
 
-- **Layer 1 — Skills & automation** → [[skills/_index|skills/]] · [[automations/_index|automations/]]
-- **Layer 2 — Memory** → [[memory/_index|memory/]] (`raw → wiki → output`)
-- **Layer 3 — Interface** → the Obsidian graph (open the graph view); dashboard is future work
+## What's deliberately NOT here
 
-## Registries
+Project registries, live memory, automation rows, vault federations — all instance data.
+The framework stays **public-safe by construction**; see [[CLAUDE|CLAUDE.md]].
 
-| Registry | What |
-|----------|------|
-| [[projects/_index\|projects/]] | Every repo we run, as a node — purpose, stack, entry points |
-| [[vaults/_index\|vaults/]] | Federated project vaults, symlinked into this graph (isohub, herakles) |
-| [[agents/_index\|agents/]] | The agent roster + coordination patterns |
-| [[systems/_index\|systems/]] | How the OS itself operates — process, swarm, memory |
+## Using the framework
 
-## Quick start
-
-- **Run a ceremony / touch the backlog** → [[skills/agile-process/SKILL|agile-process]] skill
-- **Run a parallel sprint** → [[skills/agile-swarm/SKILL|agile-swarm]] skill
-- **Turn a folder into a knowledge graph** → [[skills/graphify/SKILL|graphify]] skill
-- **Author a new skill** → [[skills/skill-builder/SKILL|skill-builder]] skill
-- **Capture something new** → drop it in [[memory/raw/_index|memory/raw/]], promote later
-
-## The projects this OS covers
-
-[[isohub]] · [[vectis]] · [[tessera]] · [[io.space.infra]] · [[isohub-assets]] ·
-[[herakles]] · [[scrum]]
-
-## Where things go
-
-- A repeated workflow → a **skill** ([[skills/_index]])
-- A scheduled/triggered routine → an **automation** ([[automations/_index]])
-- A capture, note, or Claude output → **memory/raw**, promote to **memory/wiki**
-- A finished artifact → **memory/output**
-- A new repo → a node in **projects/**
+1. Create a private instance repo (`CLAUDE.md`, `_index.md`, `projects/`, `memory/`,
+   `automations/`, `vaults/`).
+2. Mount this repo's folders as sibling symlinks: `skills/ → ../meta-os/skills`, same for
+   `systems/`, `templates/`, `agents/`.
+3. Open the instance as your Obsidian vault; point `~/.claude/skills/<name>` symlinks at
+   `meta-os/skills/<name>` for machine-global skill discovery.

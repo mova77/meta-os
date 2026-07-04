@@ -2,19 +2,7 @@
 type: index
 tags: [os, memory, wiki]
 ---
-# memory/wiki — Refined Knowledge
+# memory/wiki (skeleton)
 
-The durable, trustworthy reference layer. Everything here has been **promoted** from
-`raw/`: cleaned, given front-matter, and linked into the graph.
-
-Organize by topic as it grows (e.g. `wiki/architecture/`, `wiki/decisions/`,
-`wiki/research/`). Add a sub-`_index.md` when a topic gets more than a handful of notes.
-
-## Suggested seeds (create as needed)
-
-- `architecture-decisions/` — cross-project ADRs and rationale
-- `research/` — promoted paper/source notes (use the [[templates/source|source template]])
-- `runbooks/` — operational how-tos that span projects
-- `glossary.md` — shared vocabulary / ubiquitous language
-
-_Empty — promote your first note from [[memory/raw/_index|raw/]]._
+See [[memory/_index]] for the raw → wiki → output flow. Live content belongs in the
+instance's memory/, not the framework.

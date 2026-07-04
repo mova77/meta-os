@@ -2,31 +2,24 @@
 type: index
 tags: [os, memory, layer2]
 ---
-# Layer 2 — Memory
+# Layer 2 — Memory (skeleton)
 
-The knowledge base. One directional flow, borrowed from Karpathy's LLM-wiki:
+The knowledge-base convention. **Instances own the live memory**; this skeleton documents
+the flow, borrowed from Karpathy's LLM-wiki:
 
 ```
 raw  →  wiki  →  output
 capture   refine    deliver
 ```
 
-| Stage | Folder | Rule |
-|-------|--------|------|
-| **raw** | [[memory/raw/_index\|raw/]] | Cheap, disposable captures & Claude outputs. Never cited as ground truth. |
-| **wiki** | [[memory/wiki/_index\|wiki/]] | Refined, linked, indexed reference. The durable knowledge. |
-| **output** | [[memory/output/_index\|output/]] | Finished deliverables — docs, decks, reports. |
+| Stage | Rule |
+|-------|------|
+| **raw/** | Cheap, disposable captures & agent outputs. Never cited as ground truth. |
+| **wiki/** | Refined, linked, indexed reference — only **promoted** notes. The durable knowledge. |
+| **output/** | Finished deliverables, each linking back to the wiki notes it drew from. |
 
 ## Promotion — the one discipline that matters
 
-Knowledge is only trustworthy after it's **promoted**: someone (human or agent) takes a
-`raw/` capture, cleans it, links it into the graph, gives it front-matter, and moves it to
-`wiki/`. Un-promoted notes stay in `raw/`. This keeps the knowledge base honest.
-
-Use [[skills/graphify/SKILL|graphify]] over `wiki/` to see the knowledge graph and find gaps/orphans.
-
-## Cross-vault memory
-
-This is the meta memory. Project-local vaults still exist — [[herakles]]-vault, isohub's
-own `.obsidian` — and are federated by linking, not copied. Durable cross-project knowledge
-gets promoted *here*.
+Knowledge is trustworthy only after promotion: clean the raw note, add front-matter and
+`[[links]]`, move it to the right `wiki/` topic folder, update that folder's `_index.md`.
+See [[systems/memory-layer]].

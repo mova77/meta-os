@@ -1,8 +1,8 @@
 # Ceremonies & story workflows
 
-> **Backlog moved to `mova77/scrum`:** steps below that say "add to / edit / commit
+> **Backlog moved to `<owner>/<scrum-repo>`:** steps below that say "add to / edit / commit
 > `backlog.json`" now happen in that private repo (a Jira-derived mirror), **not** folded
-> into io.space code PRs. A code PR records state in **Jira only**; the mirror is reconciled
+> into platform code PRs. A code PR records state in **Jira only**; the mirror is reconciled
 > separately with `sync.py --apply backlog`.
 
 The step-by-step playbooks. Mandatory **invariants** (the must/never rules) are
@@ -23,7 +23,7 @@ the returned `jiraId` → for each dependency `createIssueLink` type **"Blocks"*
 Pick one with **no open `dependencies`**, status `PLANNED`/`REFINED`, in the
 current/next sprint → transition to **In Progress** **and set its Sprint to the
 current active sprint** (mirror `sprint` in `backlog.json`) → branch
-`{projectKey}/{issueKey}-{short-summary}` (e.g. `IOS/IOS-58-orekit`) → implement,
+`{projectKey}/{issueKey}-{short-summary}` (e.g. `<SPACE>/<SPACE>-58-orekit`) → implement,
 commit, push, open PR vs `main` → transition to **IN REVIEW**.
 
 ### Sprint-on-transition rule (mandatory)
@@ -70,7 +70,7 @@ Either way, `gh pr create` must be **non-interactive + bounded** (inline
 `--body`/`--fill` + a ~15s timeout) — enforced by `gh-pr-create-guard.sh`.
 
 ## Open a sprint
-Append a planning stub for `IOS-S{n}` to `scrum/sprint-history.md` (copy the S8
+Append a planning stub for `<SPACE>-S{n}` to `scrum/sprint-history.md` (copy the S8
 template: header TBDs, goal, candidate stories table, don'ts, close-out checklist) →
 transition Jira sprint to **Active** → update `backlog.json` sprint status to
 `IN PROGRESS`. Pre-plan a **diverse basket of independent stories** across distinct
@@ -78,10 +78,10 @@ projects/vertical slices (one infra · one backend · one frontend) so N swarms 
 N worktrees with no cross-blocking. Lead proposes the basket; **PO approves scope**.
 
 ## Close a sprint  *(PO-only — `po-only-sprint-close.sh` blocks otherwise)*
-Fill in the `sprint-history.md` stub for `IOS-S{n}` — velocity, SP/day, increment
+Fill in the `sprint-history.md` stub for `<SPACE>-S{n}` — velocity, SP/day, increment
 narrative, retro highlights absorbed from `scrum/retros/` — then tick the close-out
 checklist (updates Performance Analysis table + Cumulative Platform Progress).
-Append the `IOS-S{n+1}` planning stub immediately so the doc is always one sprint
+Append the `<SPACE>-S{n+1}` planning stub immediately so the doc is always one sprint
 ahead. Sprint **closure** is the Product Owner's exclusive authority (bypass the
 hook only with explicit PO approval: `PO_APPROVED_SPRINT_CLOSE` /
 `CLAUDE_PO_SPRINT_CLOSE=1`).
@@ -97,11 +97,11 @@ leaves a gap. Don't rediscover this each day:
   retro through ~01:26 local 06-21") rather than editing the old one — daily notes
   are **never deleted/clobbered**.
 - **Reconstruct from ground truth**, not memory: `git log` across **all active
-  repos** (`io.space`, `io.space.infra`, `tessera`) for the window
+  repos** (your platform repos) for the window
   (`--since`/the prior retro's commit), the merged-PR list, and the matching
-  standup/plan note — then map commits → `IOS-` keys.
+  standup/plan note — then map commits → `<SPACE>-` keys.
 - **Sections** (a retro carries all; a standup is the forward-looking subset):
-  **What landed** (merged to `main`; table keyed by `IOS-NN` + PR + state) ·
+  **What landed** (merged to `main`; table keyed by `<SPACE>-NN` + PR + state) ·
   **Backlog & refinement** (new/refined/split issues, dep-graph reconciles) ·
   **Process** (rules banked into CLAUDE.md/this skill) · **Impediments & incidents**
   (what blocked/broke, with root cause) · **Discoveries** (insights, decisions

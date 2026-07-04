@@ -1,7 +1,7 @@
 # Architecting & seeding a new service
 
 The design swarm (for a new service or major capability) and the 5-epic skeleton
-that every IOS microservice is seeded with. Default to **design-only**; seed the
+that every platform microservice is seeded with. Default to **design-only**; seed the
 skeleton into Jira + `backlog.json` only when explicitly authorised.
 
 ## Architect a new service or major capability (design swarm)
@@ -31,12 +31,12 @@ architecture, exploiting Claude Code sub-agents.
    then follow **New microservice** below.
 
 ## New microservice — the 5-epic skeleton
-Prepopulate the IOS backlog (Jira + `backlog.json`) so every service aligns and
+Prepopulate the project backlog (Jira + `backlog.json`) so every service aligns and
 never drifts. For prefix `{PRJ}` (e.g. `PLD`):
 
 - `{PRJ}-E1` **Platform Foundation** — scaffold the **four-module in-service hexagon**
   (`{prj}-domain`, `-api`, `-persistence`, `-rest`) plus the centralized
-  composition-root deployable `launchers/{service}-svc` (per **ADR-INF-04**, IOS-386
+  composition-root deployable `launchers/{service}-svc` (per **ADR-INF-04**, <SPACE>-386
   — *no* in-service `*-launcher`; one `api` → many launchers → many topologies, also
   wired into `-Pmonolith`), ArchUnit layering rules (`DomainPurityTest` in `-domain`,
   `HexagonalArchitectureTest` in the launcher), initial container/deploy profile.
@@ -55,8 +55,8 @@ system-entry-points roster).
 
 ## Mandatory tenancy-adoption story
 Also create the standing story *Adopt multi-tenancy isolation + tenant-claim
-propagation in {PRJ}* under epic **IOS-42** ([INF] SaaS Multi-tenancy & Data Plane;
-umbrella **IOS-548**), blocked by **IOS-365** (Postgres RLS) + **IOS-366**
+propagation in {PRJ}* under epic **<SPACE>-42** ([INF] SaaS Multi-tenancy & Data Plane;
+umbrella **<SPACE>-548**), blocked by **<SPACE>-365** (Postgres RLS) + **<SPACE>-366**
 (Keycloak/X-Tenant-Id propagation). It is **not optional** (see the multi-tenancy
-engineering convention in CLAUDE.md). Mirror the IOS-403–407 / IOS-542–547 pattern
+engineering convention in CLAUDE.md). Mirror the <SPACE>-403–407 / <SPACE>-542–547 pattern
 (labels `INF, {PRJ}, multi-tenancy, identity, rls, security`).

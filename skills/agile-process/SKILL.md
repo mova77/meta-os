@@ -11,8 +11,8 @@ conventions); this skill is the on-demand *how* — load it whenever you do proc
 work and follow the relevant reference, so the ceremony isn't re-derived each time.
 
 **Authority order:** Jira (project <space>) → `scrum/<space>/backlog.json` (Jira-derived mirror,
-in the private **`mova77/scrum`** repo) → this skill → CLAUDE.md invariants. On any state
-conflict, **Jira wins**. io.space code PRs do **not** edit `scrum/**`.
+in the private **`<owner>/<scrum-repo>`** repo) → this skill → CLAUDE.md invariants. On any state
+conflict, **Jira wins**. platform code PRs do **not** edit `scrum/**`.
 
 ## When to use
 - Adding/refining/reconciling backlog items, or running `sync.py`.
@@ -41,7 +41,7 @@ For a full **parallel multi-lane sprint run**, use the companion `agile-swarm` s
    reviewer with no agent running, open it ready. Merge is the PO's call.
 4. **Sprint-on-transition** — set/add `customfield_10020` on every status move.
 5. **Jira is the only backlog write from a code PR** — code PRs touch **Jira only**, never
-   `scrum/**`. The per-space mirror is Jira-derived and lives in the private **`mova77/SCRUM`**
+   `scrum/**`. The per-space mirror is Jira-derived and lives in the private **`<owner>/<scrum-repo>`**
    repo (reconciled by `sync.py --apply backlog`). *(Supersedes "sync both sides in the code PR".)*
 6. **PO-only sprint close**; **multi-tenancy fail-closed** on every service.
 

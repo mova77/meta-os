@@ -5,7 +5,7 @@ tags: [os, skills, layer1]
 # Layer 1 — Skill Backbone
 
 Codified, executable workflows. **This folder is the single authoritative home** for the
-whole library — `scrum/.claude/skills` is being retired as a location.
+whole library — never create a second real copy; discovery is via symlinks.
 
 > If you do it more than once, it should be a skill. Author new ones with
 > [[skills/skill-builder/SKILL|skill-builder]].
@@ -26,7 +26,7 @@ whole library — `scrum/.claude/skills` is being retired as a location.
 | [[skills/reasoningbank-intelligence/SKILL\|reasoningbank-intelligence]] | Learning | Trajectory tracking, pattern distillation, adaptive learning |
 | [[skills/dual-mode/SKILL\|dual-mode]] | Meta | Dual-mode operation |
 
-## Library — full catalog (imported from scrum, canonical here)
+## Library — full catalog
 
 | Family | Skills |
 |--------|--------|

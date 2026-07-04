@@ -1,18 +1,18 @@
 # Backlog model & reconciliation
 
 > **Moved:** the per-space backlog mirrors now live in the dedicated **private repo
-> `mova77/SCRUM`** (Jira-derived). Reconcile there with `python3 scripts/sync.py
-> --space <key> --apply backlog`. Code PRs in **io.space no longer edit `scrum/**`** —
+> `<owner>/<scrum-repo>`** (Jira-derived). Reconcile there with `python3 scripts/sync.py
+> --space <key> --apply backlog`. Code PRs in **the platform repos no longer edit `scrum/**`** —
 > they record state in Jira only. Paths below are relative to the SCRUM repo.
 
-Source of truth and data shapes for the IOS backlog, plus the full `sync.py`
+Source of truth and data shapes for the project backlog, plus the full `sync.py`
 reconciliation procedure. The one-line invariants live always-on in
 `.claude/CLAUDE.md`; this is the detail.
 
 ## Source of truth
-- **Jira** project **IOS** is authoritative. Site `iospace.atlassian.net`,
+- **Jira** project **<SPACE>** is authoritative. Site `<site>.atlassian.net`,
   cloudId `9cc74dd5-1b4f-4ad3-acf2-a809863597db`, projectId `10299`.
-- `scrum/<space>/backlog.json` is a **1:1 local mirror** of every IOS issue. Keep both in
+- `scrum/<space>/backlog.json` is a **1:1 local mirror** of every <SPACE> issue. Keep both in
   sync; on any conflict, **Jira wins**.
 - Jira connector tools: `mcp__*Atlassian_Rovo__*` (the MCP server id varies per
   session — match on the suffix, e.g. `…getJiraIssue`, `…transitionJiraIssue`).
@@ -23,21 +23,21 @@ reconciliation procedure. The one-line invariants live always-on in
 When researching/planning a system, **start from its umbrella epic** (the
 program-level rollup linking that system's child epics via "Relates to"). Ask
 **graphify** for the entry point first; fall back to the `system-entry-points.md`
-roster in the `mova77/SCRUM` repo. Roster is reproducible via
-`jql = project = IOS AND issuetype = Epic AND labels = umbrella`. A new service's
+roster in the `<owner>/<scrum-repo>` repo. Roster is reproducible via
+`jql = project = <SPACE> AND issuetype = Epic AND labels = umbrella`. A new service's
 5-epic skeleton gets an `umbrella`-labelled epic.
 
 | Sys | Umbrella | Sys | Umbrella | Sys | Umbrella |
 |--|--|--|--|--|--|
-| MPS | IOS-434 | SLR | IOS-439 | AGE | IOS-441 |
-| SMS | IOS-432 | XTR | IOS-440 | ALR | IOS-524 |
-| SFD | IOS-433 | INF | IOS-436 | SMC | IOS-536 |
-| MSOT | IOS-435 | SPA | IOS-437 | TEN | IOS-548 |
-| CLK | IOS-438 | TTC | IOS-602 | | |
+| MPS | <SPACE>-434 | SLR | <SPACE>-439 | AGE | <SPACE>-441 |
+| SMS | <SPACE>-432 | XTR | <SPACE>-440 | ALR | <SPACE>-524 |
+| SFD | <SPACE>-433 | INF | <SPACE>-436 | SMC | <SPACE>-536 |
+| MSOT | <SPACE>-435 | SPA | <SPACE>-437 | TEN | <SPACE>-548 |
+| CLK | <SPACE>-438 | TTC | <SPACE>-602 | | |
 
 ## `backlog.json` shape
 `{ project, sprints[], epics[], stories[] }`
-- **`jiraId`** (e.g. `IOS-184`) is the **sole identifier**. No legacy `id` field.
+- **`jiraId`** (e.g. `<SPACE>-184`) is the **sole identifier**. No legacy `id` field.
   No `jiraUrl` — derive it as `…/browse/{jiraId}`.
 - `epics[]`: `project, jiraId, title, status, labels` (+ `description`, `color`).
 - `stories[]` (also Feature/Spike/Requirement/etc.): `project, jiraId, title,
@@ -55,7 +55,7 @@ The file is **not** stored in plain `json.dumps(indent=2, ensure_ascii=False)` f
 so loading it and re-dumping (or `jq '…' > file`) silently rewrites *every* entry to
 a different-but-equivalent serialization. A one-field change then shows up as a
 ~1000-line diff that conflicts with every concurrent branch (this actually happened —
-a single IOS-666 status flip produced a 1020-line diff).
+a single <SPACE>-666 status flip produced a 1020-line diff).
 - **Small change (status, story points, a field):** edit the **exact line** — the
   Edit tool, or `sed -i '<line>s/"IN REVIEW"/"DONE"/' scrum/<space>/backlog.json`. Then
   **`git diff --stat scrum/<space>/backlog.json`** to confirm only the intended lines moved
@@ -86,7 +86,7 @@ Plus one **deliberate terminal status `NO GO`** (a real Jira workflow transition
 PO created): work/decision **killed** — abandoned on purpose with the lesson
 recorded and accepted. It is *not* drift and must **not** be "fixed" to a canonical
 status; treat it like `DONE` for exclusion from active scope but keep it for
-traceability (e.g. IOS-164). `sync.py` / `validate-backlog.sh` accept `NO GO` as
+traceability (e.g. <SPACE>-164). `sync.py` / `validate-backlog.sh` accept `NO GO` as
 valid, not flagged.
 
 ## Reconciliation — `scripts/sync.py`
@@ -98,7 +98,7 @@ story-point** drift as real (labels are advisory).
 `scripts/sync_check.py` is a thin alias forwarding to `sync.py` (no args = the
 read-only check).
 
-### Dependency-link reconciliation (IOS-685)
+### Dependency-link reconciliation (<SPACE>-685)
 `sync.py` diffs the dependency graph: backlog `A.dependencies=[B]` ⇔ Jira "Blocks"
 link `B blocks A` (inwardIssue=B, outwardIssue=A). It reports edges present on one
 side only (real drift), flagging *dangling* edges whose endpoint doesn't exist
@@ -117,12 +117,12 @@ schedule is unreliable.
 - **Jira-wins still governs**: prefer `--apply backlog`.
 
 ### Procedure
-1. Export IOS issues — either set `JIRA_EMAIL`+`JIRA_API_TOKEN` (live mode), or
+1. Export <SPACE> issues — either set `JIRA_EMAIL`+`JIRA_API_TOKEN` (live mode), or
    build an offline export via the connector (no creds needed):
    - Call `searchJiraIssuesUsingJql` with `cloudId`,
-     `jql = "project = IOS ORDER BY key ASC"`,
+     `jql = "project = <SPACE> ORDER BY key ASC"`,
      `fields = ["status","issuetype","labels","parent","summary","customfield_10016"]`,
-     `maxResults = 100`, `responseContentFormat = "markdown"`. ~5 pages (IOS ≈ 484
+     `maxResults = 100`, `responseContentFormat = "markdown"`. ~5 pages (<SPACE> ≈ 484
      issues); paginate by passing `.issues.pageInfo.endCursor` as `nextPageToken`
      until `hasNextPage=false`.
    - Each page exceeds the tool token cap and is **auto-saved to a file** (path in

@@ -27,10 +27,10 @@ usually un-promoted knowledge or missing links.
 
 ## Federation by symlink, not absorption
 
-Project-local vaults keep existing and stay colocated with their code: the isohub docs
-vault (`isohub/isohub` — ADRs, architecture, runbooks) and [[herakles]]-vault. They join
-this OS's Obsidian graph through symlinks in [[vaults/_index|vaults/]] — one unified graph,
-zero file moves, each vault still owned and committed by its own repo.
+Project-local docs vaults (ADRs, architecture, runbooks colocated with their code) keep
+existing where they are. They join the OS's Obsidian graph through symlinks in the
+instance's `vaults/` folder — one unified graph, zero file moves, each vault still owned
+and committed by its own repo.
 
 Federation is for **navigation**; promotion is for **canon**: cross-project-durable
 knowledge still gets promoted into this `wiki/`. Single source of truth per fact.

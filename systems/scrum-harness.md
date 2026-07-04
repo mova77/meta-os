@@ -10,11 +10,12 @@ this node just anchors it into the OS and records the invariants.
 ## Source of truth
 
 ```
-Jira (project IOS) → scrum/<space>/backlog.json (mirror) → agile-process skill → OS invariants
+Jira (project <SPACE>) → scrum/<space>/backlog.json (mirror) → agile-process skill → OS invariants
 ```
 
-On any conflict, **the higher source wins** — Jira is authoritative. io.space code PRs do
-**not** edit `scrum/**`. The [[scrum]] project node holds the repo details.
+On any conflict, **the higher source wins** — the tracker is authoritative. Platform code
+PRs do **not** edit `scrum/**`. The instance's process-repo project node holds the details
+(tracker site, space key, repo owner).
 
 ## What the harness covers (via [[skills/agile-process/SKILL|agile-process]])
 
