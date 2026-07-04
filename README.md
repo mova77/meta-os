@@ -41,6 +41,13 @@ coordination patterns), [`templates/`](templates/).
 - `memory/raw/` is disposable scratch; promote to `memory/wiki/` to make knowledge durable.
 - **No instance data in this repo** — it stays public-safe by construction.
 
+## License & provenance
+
+MIT ([LICENSE](LICENSE)). The skill library includes MIT-licensed content from
+[claude-flow / Ruflo](https://github.com/ruvnet/claude-flow) (rUv) and
+[Graphify Labs](https://github.com/safishamsi/graphify) — full per-skill origin table in
+[PROVENANCE.md](PROVENANCE.md).
+
 ## Status
 
 Framework v0 — skill library (37 skills), operating-model docs, memory conventions,
