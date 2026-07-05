@@ -15,3 +15,4 @@ the procedure. Load the one you need.
 | [[systems/swarm-harness\|swarm-harness]] | Parallel multi-lane execution model (driven by [[skills/agile-swarm/SKILL|agile-swarm]]) |
 | [[systems/ontology\|ontology]] | The vault's type system made explicit: note types, tags, relations ([[systems/ontology.yaml\|ontology.yaml]] is the machine-readable contract) |
 | [[systems/interface-layer\|interface-layer]] | Layer 3 contract: what the dashboard reads, how it triggers runs, ontology-driven rendering |
+| [[systems/interface-extensions\|interface-extensions]] | Layer 3 roadmap: the common agentic-dashboard widget set evaluated against the contract — verdicts, new read surfaces, phasing |

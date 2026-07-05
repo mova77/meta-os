@@ -75,3 +75,7 @@ dashboard displays results, it never owns them.
 3. Graph view over `graphify-out/graph.json` + ontology-driven type/tag facets.
 4. Front-matter linting against [[systems/ontology.yaml|ontology.yaml]].
 5. Prompt console with headless runs + streaming (last — the terminal already does this).
+
+Beyond the MVP: [[systems/interface-extensions]] evaluates the wider agentic-dashboard
+widget set against this contract and phases in the adopted ones (unified event feed,
+scheduler forecast, output inbox, engine usage).
