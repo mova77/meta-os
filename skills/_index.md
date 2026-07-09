@@ -14,8 +14,8 @@ whole library — never create a second real copy; discovery is via symlinks.
 
 | Skill | Domain | Use for |
 |-------|--------|---------|
-| [[skills/agile-process/SKILL\|agile-process]] | Process | Backlog↔Jira reconciliation, ceremonies, story transitions, sprint open/close (generalized: `project <space>`) |
-| [[skills/agile-swarm/SKILL\|agile-swarm]] | Process | Running a sprint as parallel multi-lane worktree-isolated agent swarms |
+| [[skills/agile-process/SKILL\|agile-process]] | Process | **→ moved to the [agile pack](https://github.com/mova77/meta-os-agile-pack)** — mount with `scripts/packs.sh add agile`; link resolves in instances with the pack mounted |
+| [[skills/agile-swarm/SKILL\|agile-swarm]] | Process | **→ moved to the [agile pack](https://github.com/mova77/meta-os-agile-pack)** — same mount; deprecation rows kept for one minor version |
 | [[skills/graphify/SKILL\|graphify]] | Memory | Turn any folder (code/docs/papers/media) into a navigable knowledge graph |
 | [[skills/skill-builder/SKILL\|skill-builder]] | Meta | Author new skills with correct frontmatter + progressive disclosure |
 | [[skills/bootstrap-instance/SKILL\|bootstrap-instance]] | Meta | One-time onboarding for a fresh instance repo: backlog/tracking model, first project, GitHub integration |
