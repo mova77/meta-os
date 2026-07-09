@@ -15,9 +15,8 @@ instance on demand, individually pinned and updatable. Same philosophy as the
 
 A git repo carrying `skills/<name>/SKILL.md` folders (a `skills/` dir at the repo root,
 or skill folders at the root itself — the mount script auto-detects). It MAY also carry
-`agents/` and `hooks/`; v1 mounts **skills only** (agents/hooks mounting is a planned
-extension). A pack needs no special manifest — existing third-party skill collections
-qualify as-is.
+`agents/` (engine agent definitions, `*.md`) and `hooks/` (hook scripts). A pack needs
+no special manifest — existing third-party skill collections qualify as-is.
 
 ## Mount model (in the instance)
 
@@ -29,8 +28,14 @@ qualify as-is.
   pack bump.
 - **Collision rule: the framework wins.** A pack skill whose name collides with a core
   skill (or an earlier pack's) is skipped with a warning — deterministic, no shadowing.
-- Machine-global discovery is unchanged: `~/.claude/skills/<name>` chains through the
-  union dir to wherever the skill really lives.
+- Mounting also enriches the **project-local `.claude/` engine surface** —
+  `.claude/skills/` mirrors the union (sessions inside the instance discover
+  everything with zero global setup; portable to containers/remote), pack `agents/`
+  link into `.claude/agents/`, pack `hooks/` are **staged** at `.claude/hooks/<pack>/`.
+  **Hooks are never auto-wired into `settings.json`** — a hook is executable code, so
+  enabling one is an explicit, per-hook user decision, always.
+- Machine-global discovery (`~/.claude/skills/<name>`) remains available and chains
+  through the union dir to wherever the skill really lives.
 
 ## The registry — [[systems/packs.yaml|packs.yaml]]
 
