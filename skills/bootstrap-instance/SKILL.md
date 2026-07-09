@@ -60,7 +60,9 @@ The core ships only generic OS skills; domain skill sets are **packs**
 ([[systems/packs]]). Read the registry through the mount (`systems/packs.yaml`) and
 offer the `available` entries by name + description — plus "none, add later". For each
 chosen pack run `scripts/packs.sh add <name>`; report the provenance/license line as
-you do. If the user picked the Jira-integrated backlog model in Step 1, suggest the
+you do. Mounting auto-enriches the project-local `.claude/` (skills + agents); if a
+pack stages hooks, list them and ask per-hook before wiring any into
+`.claude/settings.json` — never enable executable hooks silently. If the user picked the Jira-integrated backlog model in Step 1, suggest the
 agile pack when it's available. Custom repos are allowed
 (`scripts/packs.sh add <name> <url>`) but tell the user they're outside the curated
 registry.
