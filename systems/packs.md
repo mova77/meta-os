@@ -13,7 +13,11 @@ instance on demand, individually pinned and updatable.
 Packs are also how the OS stays **domain-agnostic**: a software-delivery estate mounts
 the agile pack, a research instance might mount a literature-review pack, a
 systems-engineering instance a requirements/trade-study pack — same core, different
-opinions. Zero packs is a fully supported install. Same philosophy as the
+opinions. Zero packs is a fully supported install.
+
+For *what* makes a good pack and *where* the strategic opportunity is (codified
+disciplines beyond software), see [[systems/pack-strategy]]. To *author* one, use the
+[[skills/pack-builder/SKILL|pack-builder]] skill. Same philosophy as the
 [[systems/distribution|framework mount]] itself; packs just apply it per-domain.
 
 ## What a pack is

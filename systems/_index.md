@@ -18,3 +18,4 @@ the procedure. Load the one you need.
 | [[systems/interface-extensions\|interface-extensions]] | Layer 3 roadmap: the common agentic-dashboard widget set evaluated against the contract — verdicts, new read surfaces, phasing |
 | [[systems/distribution\|distribution]] | How an instance consumes the framework: single-clone (submodule), sibling checkouts, container; why one merged repo is rejected; per-project delivery targets |
 | [[systems/packs\|packs]] | Skill packs: core stays generic; domain skill sets mount as pinned pack submodules from a curated registry ([[systems/packs.yaml\|packs.yaml]]) |
+| [[systems/pack-strategy\|pack-strategy]] | The thesis behind packs: a pack = a codified discipline (method + rigor + portability); the evidence-disciplined-work niche the coding-born ecosystem leaves open, and why meta-os is built to fill it |

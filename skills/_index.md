@@ -18,6 +18,7 @@ whole library — never create a second real copy; discovery is via symlinks.
 | [[skills/agile-swarm/SKILL\|agile-swarm]] | Process | **→ moved to the [agile pack](https://github.com/mova77/meta-os-agile-pack)** — same mount; deprecation rows kept for one minor version |
 | [[skills/graphify/SKILL\|graphify]] | Memory | Turn any folder (code/docs/papers/media) into a navigable knowledge graph |
 | [[skills/skill-builder/SKILL\|skill-builder]] | Meta | Author new skills with correct frontmatter + progressive disclosure |
+| [[skills/pack-builder/SKILL\|pack-builder]] | Meta | Author a new pack: apply the is-it-a-pack test, structure (pack.yaml/profiles), parameterise, provenance/registry, verify by mounting — see [[systems/pack-strategy]] |
 | [[skills/bootstrap-instance/SKILL\|bootstrap-instance]] | Meta | One-time onboarding for a fresh instance repo: backlog/tracking model, first project, GitHub integration |
 | [[skills/hooks-automation/SKILL\|hooks-automation]] | Automation | Pre/post-task hooks, session mgmt, git + memory coordination |
 | [[skills/swarm-orchestration/SKILL\|swarm-orchestration]] | Orchestration | Multi-agent parallel execution, dynamic topology |
