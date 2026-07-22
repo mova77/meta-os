@@ -50,6 +50,13 @@ see [[systems/swarm-harness]] and the [[skills/agile-swarm/SKILL|agile-swarm]] s
 Simple mechanical transforms → do them directly (Edit). Simple tasks → Haiku. Architecture,
 security, complex reasoning → Sonnet/Opus. Don't burn a large model on a rename.
 
+## Engine routing (which CLI)
+
+Claude Code is the **default engine**. For cross-provider diversity or alternate CLIs
+(Gemini, Grok, …), use [[systems/engine]] + [[skills/multi-engine/SKILL|multi-engine]]
+(`meta run` / `meta fan`) — not a second swarm stack. Fan-out is opt-in; in-session
+coordination stays SendMessage / Ruflo.
+
 ## Quality gate
 
 Non-trivial work passes through a reviewer and [[skills/verification-quality/SKILL|verification-quality]] before it's
