@@ -64,10 +64,21 @@ queue with no forecast — degrade visibly, don't fake precision.
 
 ## Trigger surface
 
-One mechanism: run the engine **headless** (`claude -p "<prompt>"`) from the prompt
-console, streaming output to the UI (SSE). Skill invocations are prompt prefills over the
-same mechanism. Outputs land in `memory/raw/` or `output/` per normal discipline — the
-dashboard displays results, it never owns them.
+One mechanism: run the engine **headless** from the prompt console, streaming output to
+the UI (SSE). Skill invocations are prompt prefills over the same mechanism. Outputs land
+in `memory/raw/` or `output/` per normal discipline — the dashboard displays results, it
+never owns them.
+
+**Default adapter** remains Claude (`claude -p "<prompt>"`). Prefer the pluggable form
+via [meta-cli](https://github.com/mova77/meta-cli) when multi-provider or configured
+routing is needed:
+
+```text
+meta run -p <claude|gemini|grok|…> -- "<prompt>"
+```
+
+Engine contract and fan-out rules: [[systems/engine]]. Multi-provider collect skill:
+[[skills/multi-engine/SKILL|multi-engine]].
 
 ## MVP order
 

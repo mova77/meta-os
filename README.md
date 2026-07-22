@@ -49,9 +49,12 @@ coordination patterns), [`templates/`](templates/).
 
 ## Prerequisites
 
-- **[Claude Code](https://claude.com/claude-code)** — required; runs the skills and reads `CLAUDE.md`.
+- **[Claude Code](https://claude.com/claude-code)** — required (default engine); runs the skills and reads `CLAUDE.md`.
 - **[Obsidian](https://obsidian.md)** — optional; lets you browse the vault as a graph.
   Everything works from Claude Code alone without it.
+- **[meta-cli](https://github.com/mova77/meta-cli)** — optional; multi-engine headless fan-out
+  (`claude` / `gemini` / `grok` / …). Contract: [`systems/engine.md`](systems/engine.md);
+  skill: [`skills/multi-engine/`](skills/multi-engine/).
 - **Python 3** — optional; only used by the [`graphify`](skills/graphify/) skill, which
   self-installs its one dependency (`pip install graphifyy`) the first time it runs.
   Nothing to install up front.
